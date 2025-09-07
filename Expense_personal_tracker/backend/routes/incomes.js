@@ -3,14 +3,14 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/auth');
 const router = express.Router();
 
-// Liste des revenus de l'utilisateur connecté
+
 router.get('/', authenticateToken, async (req, res) => {
   const userId = req.user.userId;
   const result = await pool.query('SELECT * FROM incomes WHERE user_id = $1', [userId]);
   res.json(result.rows);
 });
 
-// Ajouter un revenu
+
 router.post('/', authenticateToken, async (req, res) => {
   const userId = req.user.userId;
   const { amount, category, date, description } = req.body;
