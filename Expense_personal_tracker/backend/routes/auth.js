@@ -4,9 +4,8 @@ const jwt = require('jsonwebtoken');
 const pool = require('../db');
 const router = express.Router();
 
-const SECRET = 'votre_secret_jwt'; // À remplacer par une vraie clé secrète
+const SECRET = 'votre_secret_jwt'; 
 
-// Inscription
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -21,7 +20,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// Connexion
+
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
